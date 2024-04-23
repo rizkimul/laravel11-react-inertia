@@ -12,4 +12,19 @@ class Project extends Model
     public function tasks(){
         return $this->hasMany(Task::class);
     }
+
+    /**
+     * Get the users that owns the Project
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function createdBy()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+     
+    public function updatedBy()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }
